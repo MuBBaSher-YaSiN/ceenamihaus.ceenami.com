@@ -9,7 +9,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 
-const images = Array.from({ length: 10 }, (_, i) => `/assets/img-${i + 1}.jpg`);
+const images = Array.from({ length: 10 }, (_, i) => `/assets/img-${i + 1}.webp`);
 
 export default function SpotlightGallery() {
   const [modalOpen, setModalOpen] = useState(false);

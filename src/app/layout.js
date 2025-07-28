@@ -48,7 +48,7 @@ export const metadata = {
     type: "website",
   },
   icons: {
-    icon: "/favicon.png", 
+    icon: "/favicon.webp", 
   },
 };
 
