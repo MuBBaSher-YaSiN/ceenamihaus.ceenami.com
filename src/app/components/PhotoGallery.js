@@ -41,10 +41,10 @@ export default function SpotlightGallery() {
   }
 
   return (
-    <section className="bg-black py-20 px-4 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+   <section className="section bg-black">
+  <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="text-4xl text-center font-bold text-white mb-14 tracking-wide"
+          className="text-4xl section-heading text-white tracking-wide"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

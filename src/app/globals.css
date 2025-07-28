@@ -2,28 +2,50 @@
 @import 'swiper/css';
 @import 'swiper/css/autoplay';
 
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --color-primary: 239 68 68; /* red-500 */
+  --color-primary-hover: 220 38 38; /* red-700 */
+  --color-dark: 17 24 39; /* gray-900 */
+  --color-light: 249 250 251; /* gray-50 */
+  --color-border: 55 65 81; /* gray-700 */
+
+  /* Typography */
+  --text-heading: 3rem; /* text-4xl */
+  --text-heading-lg: 3.75rem; /* text-6xl */
+  --text-subheading: 1.25rem; /* text-xl */
+  --text-body: 1rem; /* text-base */
+
+  /* Spacing */
+  --section-py: 5rem; /* py-20 */
+  --section-px: 1rem; /* px-4 */
+  
+  /* Animation */
+  --transition-duration: 300ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  /* Standardized button */
+  .btn-primary {
+    @apply bg-red-500 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-full;
+    transition-duration: var(--transition-duration);
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  
+  /* Standardized section */
+  .section {
+    @apply w-full;
+    padding: var(--section-py) var(--section-px);
+  }
+  
+  /* Standardized heading */
+  .section-heading {
+    @apply font-bold text-center mb-14;
+    font-size: var(--text-heading);
+  }
+  
+  @screen md {
+    .section-heading {
+      font-size: var(--text-heading-lg);
+    }
+  }
 }

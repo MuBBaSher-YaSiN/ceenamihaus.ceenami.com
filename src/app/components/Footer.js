@@ -5,8 +5,7 @@ import { BsHouseDoorFill } from 'react-icons/bs'
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black pt-12 pb-8 px-4 overflow-hidden border-t border-gray-800">
-      {/* Subtle floating particles */}
+<footer className="section bg-black border-t border-gray-700">      {/* Subtle floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <motion.div

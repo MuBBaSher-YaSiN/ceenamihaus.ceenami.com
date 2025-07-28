@@ -61,9 +61,8 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="relative bg-gradient-to-b from-gray-900 to-black py-20 md:py-28 px-4 overflow-hidden">
-      {/* Optimized background animations */}
-      <div className="absolute inset-0 overflow-hidden">
+   <section className="section bg-gradient-to-b from-gray-900 to-black">
+  <div className="max-w-7xl mx-auto relative z-10">
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
