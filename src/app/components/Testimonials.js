@@ -6,10 +6,6 @@ import { FaStar } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { useRef, useState, useEffect } from 'react'
-
-import 'swiper/css'
-import 'swiper/css/effect-creative'
-import 'swiper/css/autoplay'
 import Image from 'next/image'
 
 const reviews = [
@@ -25,7 +21,7 @@ const reviews = [
     text: 'One of the best Airbnb experiences I have had. Host was friendly and the space was beautiful.',
     avatar: '/avatars/avatar-2.png'
   },
-   {
+  {
     name: 'Kris',
     rating: 5,
     text: 'A hidden gem. Everything was exactly as described. Super cozy and welcoming.',
@@ -37,7 +33,6 @@ const reviews = [
     text: 'Modern vibe with comfort. Loved the interior and peaceful atmosphere. Great stay overall.',
     avatar: '/avatars/avatar-3.png'
   },
- 
 ]
 
 export default function Testimonials() {
@@ -61,11 +56,13 @@ export default function Testimonials() {
   }
 
   return (
-   <section className="section bg-gradient-to-b from-gray-900 to-black">
-  <div className="max-w-7xl mx-auto relative z-10">
+    <section className="relative bg-gradient-to-b from-gray-900 to-black py-20 md:py-28 px-4 overflow-hidden">
+      {/* Background elements - both floating circles and stars */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Floating circles */}
         {[...Array(5)].map((_, i) => (
           <motion.div
-            key={i}
+            key={`circle-${i}`}
             className="absolute rounded-full bg-blue-500/10"
             initial={{
               top: `${Math.random() * 100}%`,
@@ -84,6 +81,32 @@ export default function Testimonials() {
               ease: "linear"
             }}
           />
+        ))}
+        
+        {/* Floating stars */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={`star-${i}`}
+            className="absolute text-yellow-400"
+            initial={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              opacity: 0,
+              scale: 0
+            }}
+            animate={{
+              opacity: [0, 0.6, 0],
+              scale: [0, 1.1, 0],
+              rotate: Math.random() > 0.5 ? [0, 120] : [0, -120]
+            }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              repeatDelay: Math.random() * 3
+            }}
+          >
+            <FaStar size={Math.random() > 0.5 ? 10 : 14} />
+          </motion.div>
         ))}
       </div>
 
@@ -111,11 +134,12 @@ export default function Testimonials() {
             creativeEffect={{
               prev: {
                 shadow: true,
-                translate: [0, 0, -300],
-                opacity: 0
+                translate: ['-80%', 0, 0], // Changed from opacity to slide in from left
+                opacity: 0.6
               },
               next: {
-                translate: ['80%', 0, 0]
+                translate: ['80%', 0, 0],
+                opacity: 0.6
               }
             }}
             loop
@@ -127,9 +151,9 @@ export default function Testimonials() {
             spaceBetween={20}
             slidesPerView={1}
             breakpoints={{
-              640: { slidesPerView: 1.2 },
-              768: { slidesPerView: 1.5 },
-              1024: { slidesPerView: 2.2 }
+              640: { slidesPerView: 1.5 },
+              768: { slidesPerView: 1.8 }, // Adjusted for better balance
+              1024: { slidesPerView: 2.5 }
             }}
             centeredSlides
             className="!overflow-visible"
@@ -147,19 +171,30 @@ export default function Testimonials() {
                     transition={{ duration: 0.4 }}
                     className="h-full"
                   >
-                    <div className={`bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl md:rounded-2xl p-6 md:p-8 h-full shadow-xl md:shadow-2xl border border-gray-700/50 transition-all duration-300 ${isActive ? 'scale-100' : 'scale-90'}`}>
+                    <div className={`relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl md:rounded-2xl p-6 md:p-8 h-full shadow-xl md:shadow-2xl border border-gray-700/50 transition-all duration-300 ${isActive ? 'scale-100' : 'scale-90'}`}>
+                      {/* Decorative left element for active card */}
+                      {isActive && (
+                        <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 hidden md:block">
+                          <div className="h-16 w-16 rounded-full bg-blue-500/20 blur-md"></div>
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-blue-400">
+                              <path d="M10 17l5-5-5-5v10z" fill="currentColor" />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+                      
                       <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
                         <div className="relative h-12 w-12 md:h-14 md:w-14 shrink-0">
                           <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full" />
                           <div className="absolute inset-1 bg-gray-800 rounded-full flex items-center justify-center overflow-hidden">
-                            
-<Image
-  src={review.avatar}
-  alt={review.name}
-  width={56}
-  height={56}
-  className="rounded-full object-cover"
-/>
+                            <Image
+                              src={review.avatar}
+                              alt={review.name}
+                              width={56}
+                              height={56}
+                              className="rounded-full object-cover"
+                            />
                           </div>
                         </div>
                         <div>
@@ -202,34 +237,6 @@ export default function Testimonials() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Optimized floating stars */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-yellow-400"
-            initial={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              opacity: 0,
-              scale: 0
-            }}
-            animate={{
-              opacity: [0, 0.6, 0],
-              scale: [0, 1.1, 0],
-              rotate: Math.random() > 0.5 ? [0, 120] : [0, -120]
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              repeatDelay: Math.random() * 3
-            }}
-          >
-            <FaStar size={Math.random() > 0.5 ? 10 : 14} />
-          </motion.div>
-        ))}
       </div>
     </section>
   )
