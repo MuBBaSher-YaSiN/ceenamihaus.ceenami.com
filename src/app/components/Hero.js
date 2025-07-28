@@ -51,21 +51,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
-        {/* Logo */}
-        <motion.div 
-          className="mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Image
-            src="/assets/white-logo.png"
-            alt="Ceenami Haus Logo"
-            width={140}
-            height={140}
-            className="object-contain"
-          />
-        </motion.div>
+        
         
         {/* Headline with refined accent color */}
         <motion.h1 

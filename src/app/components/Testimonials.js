@@ -33,6 +33,12 @@ const reviews = [
     text: "Modern vibe with comfort. Loved the interior and peaceful atmosphere. Great stay overall.",
     avatar: "/avatars/avatar-3.png",
   },
+  {
+    name: "Maria",
+    rating: 5,
+    text: "Such a beautiful and comfortable space. You can tell a lot of thought went into every corner..",
+    avatar: "/avatars/avatar-2.png",
+  },
 ];
 
 export default function Testimonials() {
