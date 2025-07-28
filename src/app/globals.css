@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import 'swiper/css';
-@import 'swiper/css/autoplay';
+@import "swiper/css";
+@import "swiper/css/autoplay";
 
 :root {
   /* Colors */
@@ -19,7 +19,7 @@
   /* Spacing */
   --section-py: 5rem; /* py-20 */
   --section-px: 1rem; /* px-4 */
-  
+
   /* Animation */
   --transition-duration: 300ms;
 }
@@ -30,22 +30,36 @@
     @apply bg-red-500 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-full;
     transition-duration: var(--transition-duration);
   }
-  
+
   /* Standardized section */
   .section {
     @apply w-full;
     padding: var(--section-py) var(--section-px);
   }
-  
+
   /* Standardized heading */
   .section-heading {
     @apply font-bold text-center mb-14;
     font-size: var(--text-heading);
   }
-  
+
   @screen md {
     .section-heading {
       font-size: var(--text-heading-lg);
     }
   }
+}
+/* Add this to your CSS file */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }

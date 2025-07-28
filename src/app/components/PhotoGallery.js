@@ -1,48 +1,48 @@
-'use client'
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
-import 'swiper/css'
+import { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
-import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
-import Tilt from 'react-parallax-tilt'
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 
-const images = Array.from({ length: 10 }, (_, i) => `/assets/img-${i + 1}.jpg`)
+const images = Array.from({ length: 10 }, (_, i) => `/assets/img-${i + 1}.jpg`);
 
 export default function SpotlightGallery() {
-  const [modalOpen, setModalOpen] = useState(false)
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [activeIndex, setActiveIndex] = useState(0)
-  const swiperRef = useRef(null)
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef(null);
 
   const openModal = (index) => {
-    setCurrentIndex(index)
-    setModalOpen(true)
-    document.body.style.overflow = 'hidden'
-  }
+    setCurrentIndex(index);
+    setModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
 
   const closeModal = () => {
-    setModalOpen(false)
-    document.body.style.overflow = 'auto'
-  }
+    setModalOpen(false);
+    document.body.style.overflow = "auto";
+  };
 
   const prevImage = () => {
-    const newIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1
-    setActiveIndex(newIndex)
-    swiperRef.current?.slideToLoop(newIndex)
-  }
+    const newIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
+    setActiveIndex(newIndex);
+    swiperRef.current?.slideToLoop(newIndex);
+  };
 
   const nextImage = () => {
-    const newIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1
-    setActiveIndex(newIndex)
-    swiperRef.current?.slideToLoop(newIndex)
-  }
+    const newIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(newIndex);
+    swiperRef.current?.slideToLoop(newIndex);
+  };
 
   return (
-   <section className="section bg-black">
-  <div className="max-w-7xl mx-auto">
+    <section className="section bg-black">
+      <div className="max-w-7xl mx-auto">
         <motion.h2
           className="text-4xl section-heading text-white tracking-wide"
           initial={{ opacity: 0, y: -20 }}
@@ -90,14 +90,16 @@ export default function SpotlightGallery() {
             }}
           >
             {images.map((img, index) => {
-              const isActive = index === activeIndex
+              const isActive = index === activeIndex;
               return (
                 <SwiperSlide key={index} className="pb-10">
                   <Tilt glareEnable glareMaxOpacity={0.2} scale={1.02}>
                     <motion.div
                       onClick={() => openModal(index)}
                       className={`relative mx-auto h-96 transition-all duration-500 cursor-pointer shadow-xl rounded-2xl overflow-hidden ${
-                        isActive ? 'w-[92%] scale-125 z-10' : 'w-[80%] opacity-70'
+                        isActive
+                          ? "w-[92%] scale-125 z-10"
+                          : "w-[80%] opacity-70"
                       }`}
                       whileHover={{ scale: isActive ? 1.08 : 1.02 }}
                     >
@@ -112,7 +114,7 @@ export default function SpotlightGallery() {
                     </motion.div>
                   </Tilt>
                 </SwiperSlide>
-              )
+              );
             })}
           </Swiper>
         </div>
@@ -175,5 +177,5 @@ export default function SpotlightGallery() {
         )}
       </AnimatePresence>
     </section>
-  )
+  );
 }
