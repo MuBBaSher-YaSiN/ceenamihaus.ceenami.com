@@ -63,3 +63,35 @@
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+/* Floating animation */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+/* Fade-in-up animation */
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0; /* Start invisible */
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+/* Optional: Add this if you want the video to cover the whole screen on mobile */
+@media (max-width: 640px) {
+  .h-screen {
+    height: 100vh !important;
+    min-height: -webkit-fill-available;
+  }
+}

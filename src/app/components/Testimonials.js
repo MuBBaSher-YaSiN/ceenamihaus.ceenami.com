@@ -18,7 +18,7 @@ const reviews = [
   {
     name: "Maria",
     rating: 5,
-    text: "One of the best Airbnb experiences I have had. Host was friendly and the space was beautiful.",
+    text: "Such a beautiful and comfortable space. You can tell a lot of thought went into every corner..",
     avatar: "/avatars/avatar-2.png",
   },
   {
