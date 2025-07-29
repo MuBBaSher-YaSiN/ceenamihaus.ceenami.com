@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background with multiple fallbacks */}
       <div className="absolute inset-0 bg-gray-900">
         <Image
-          src="/assets/img-1.jpg"
+          src="/assets/img-1.webp"
           alt="Ceenami Haus Cover"
           fill
           priority
