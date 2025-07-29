@@ -31,10 +31,7 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 group">
-                    <motion.div 
-                        whileHover={{ scale: 1.05 }}
-                        className="relative h-10 w-10 md:h-12 md:w-12"
-                    >
+                   
                         <Image
                             src='/assets/white-logo.png'
                             fill
@@ -42,7 +39,6 @@ export default function Navbar() {
                             className="object-contain group-hover:opacity-90 transition-opacity"
                             priority
                         />
-                    </motion.div>
                     <span className="text-xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-500">
                         Ceenami Haus
                     </span>
