@@ -10,33 +10,27 @@ import Image from "next/image";
 
 const reviews = [
   {
-    name: "Jordan",
+    name: "Binh D",
     rating: 5,
-    text: "Absolutely loved staying here. Clean, stylish, and perfect location. Would definitely come back.",
+    text: "Amazing house. Good attention to detail and effort in the house. For the price it is listed at, it is unbeatable. The homeowner was easy to communicate with and responded quickly and had a quick conversation with a neighbor who was kind.",
     avatar: "/avatars/avatar-1.png",
   },
-  {
-    name: "Maria",
+   {
+    name: "Laura",
     rating: 5,
-    text: "Such a beautiful and comfortable space. You can tell a lot of thought went into every corner..",
+    text: "Enjoyed our stay at this wonderful home. Spacious, clean, and free of clutter. TV easy to understand. Thank you for your beautiful spot.",
     avatar: "/avatars/avatar-2.png",
   },
   {
-    name: "Kris",
+    name: "Caleb",
     rating: 5,
-    text: "A hidden gem. Everything was exactly as described. Super cozy and welcoming.",
-    avatar: "/avatars/avatar-1.png",
-  },
-  {
-    name: "Devon",
-    rating: 5,
-    text: "Modern vibe with comfort. Loved the interior and peaceful atmosphere. Great stay overall.",
+    text: "When you come to town, you stay at this spot! The aesthetic, the details, and multitude of activities just within the home were so intentional for customer experience and satisfaction. The communication, transparency, and care of Ceenami is exactly what you look for in a host! Even the fact the home was well stocked with essentials saved us a few times. This is the NUMBER 1 Airbnb in my book so far and I strongly encourage you book!",
     avatar: "/avatars/avatar-3.png",
   },
   {
-    name: "Maria",
+    name: "Susan D",
     rating: 5,
-    text: "Such a beautiful and comfortable space. You can tell a lot of thought went into every corner..",
+    text: "Above and Beyond! Told the host we were there for a birthday party and we were welcomed with birthday balloons and smores.",
     avatar: "/avatars/avatar-2.png",
   },
 ];
@@ -233,9 +227,12 @@ export default function Testimonials() {
                           </div>
                         </div>
                       </div>
-                      <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed mb-4 md:mb-6">
-                        {review.text}
-                      </p>
+                      <p 
+                      title={review.text} //add tooltip for long text
+                      className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed mb-4 md:mb-6 line-clamp-4">
+  {review.text}
+</p>
+
                       <div className="absolute bottom-4 md:bottom-6 right-4 md:right-6">
                         <svg
                           width="32"

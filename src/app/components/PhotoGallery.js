@@ -69,54 +69,54 @@ export default function SpotlightGallery() {
           </div>
 
           <Swiper
-            modules={[Autoplay]}
-            loop
-            centeredSlides
-            onSwiper={(swiper) => (swiperRef.current = swiper)}
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            speed={2000}
-            autoplay={{
-              delay: 0,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            spaceBetween={10}
-            slidesPerView={1.2}
-            breakpoints={{
-              640: { slidesPerView: 1.5 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 2.7 },
-              1280: { slidesPerView: 3.2 },
-            }}
+  modules={[Autoplay]}
+  loop
+  centeredSlides
+  onSwiper={(swiper) => (swiperRef.current = swiper)}
+  onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+  speed={1000} // reduced from 2000
+  autoplay={{
+    delay: 2500, // changed from 0 for smoother load
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+  }}
+  spaceBetween={10}
+  slidesPerView={1.2}
+  breakpoints={{
+    640: { slidesPerView: 1.5 },
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 2.7 },
+    1280: { slidesPerView: 3.2 },
+  }}
+>
+  {images.map((img, index) => {
+    const isActive = index === activeIndex;
+    return (
+      <SwiperSlide key={index} className="pb-10">
+        <Tilt glareEnable glareMaxOpacity={0.2} scale={1.02}>
+          <div
+            onClick={() => openModal(index)}
+            className={`relative mx-auto h-96 transition-all duration-500 cursor-pointer shadow-xl rounded-2xl overflow-hidden ${
+              isActive ? "w-[92%] z-10" : "w-[80%] opacity-70"
+            }`}
           >
-            {images.map((img, index) => {
-              const isActive = index === activeIndex;
-              return (
-                <SwiperSlide key={index} className="pb-10">
-                  <Tilt glareEnable glareMaxOpacity={0.2} scale={1.02}>
-                    <motion.div
-                      onClick={() => openModal(index)}
-                      className={`relative mx-auto h-96 transition-all duration-500 cursor-pointer shadow-xl rounded-2xl overflow-hidden ${
-                        isActive
-                          ? "w-[92%] scale-125 z-10"
-                          : "w-[80%] opacity-70"
-                      }`}
-                      whileHover={{ scale: isActive ? 1.08 : 1.02 }}
-                    >
-                      <Image
-                        src={img}
-                        alt={`Image ${index + 1}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover rounded-2xl"
-                        priority
-                      />
-                    </motion.div>
-                  </Tilt>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+            <Image
+  src={img}
+  alt={`Image ${index + 1}`}
+  fill
+  quality={90}
+  className="object-cover rounded-2xl"
+  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+  priority={index === 0}
+/>
+
+          </div>
+        </Tilt>
+      </SwiperSlide>
+    );
+  })}
+</Swiper>
+
         </div>
       </div>
 
